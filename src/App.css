@@ -10,20 +10,32 @@ body {
 
 
 @keyframes anim{
-  0% {background-color: rgb(255, 145, 0);} /*Amarillo*/
+  0% {background-color: rgb(255, 167, 52);} /*Amarillo*/
  25% {background-color: rgb(234, 161, 77);} /*Naranja*/
  50% {background-color: #ffef08e2;} /*Negro*/
  75% {background-color: rgba(15, 95, 193, 0.814);} /*Otra vez naranja*/
-95% {background-color: rgba(10, 36, 71, 0.944);} /*Otra vez amarillo*/
+100% {background-color: rgba(10, 36, 71, 0.944);} /*Otra vez amarillo*/
 }
 body {
 animation-name: anim;
-animation-duration: 35s;
+animation-duration: 25s;
 animation-iteration-count: infinite; 
 margin:0;
-font-family: Arial, Helvetica, sans-serif;
+font-family:  Georgia, Times, 'Times New Roman', serif;
 }
 
 h1 {
-  background-color: aquamarine;
+  
+  font-size: 50px;
+  background-color: beige;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+  
+}
+
+p {
+  text-align: center;
 }

@@ -3,8 +3,11 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="main-container">
       <h1>WeatherChannel17</h1>
+      <p>Interesado en el clima? 
+        <i><b> Busca  aquí el clima de tu ciudad </b></i>
+      </p>
     </div>
   );
 }
