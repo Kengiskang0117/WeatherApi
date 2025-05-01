@@ -1,5 +1,34 @@
 import React, { useState } from 'react';
 import './App.css';
+import cityImages from './cityImages.json';
+
+
+const formatTimeByRegion = (datetime, continent) => {
+  try {
+    const [datePart, timePart] = datetime.split(' ');
+    const isoString = `${datePart}T${timePart}:00`; // aseguramos formato HH:mm:ss
+    const date = new Date(isoString);
+
+    if (continent === 'America') {
+      return date.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+    } else if (continent === 'Europe' || continent === 'Asia') {
+      return date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+    } else {
+      return date.toLocaleTimeString();
+    }
+  } catch (e) {
+    return 'Hora inválida';
+  }
+};
+
 
 function App() {
   const [city, setCity] = useState('');
@@ -33,6 +62,7 @@ function App() {
 
   const handleDeleteOne = (index) =>  {
     const newList = citiesWeather.filter((_,i) => i !== index);
+    setCitiesWeather(newList);
   };
 
   const handleClearAll = () => {
@@ -44,7 +74,7 @@ function App() {
     <div className="main-container">
       <h1>Weather<b>Channel17</b></h1>
       <p>Interesado en el clima? 
-        <i><b> Busca aquí el clima de tu ciudad </b></i>
+        <i><b> Busca aquí el clima de cualquier ciudad </b></i>
       </p>
       {/*Sección de busqueda*/ }
       <div className= "search-section">
@@ -65,13 +95,15 @@ function App() {
         {citiesWeather.map((weather, index) => (
           <div key={index} className="weather-card">
             <img 
-            src={`https://source.unsplash.com/featured/?${weather.location.name}`} 
+            src={cityImages[weather.location.name] || 'https://via.placeholder.com/400x200?text=Imagen+no+disponible'}
             alt={`Imagen de ${weather.location.name}`}
-            style={{ width: '100%', height: '150px', objecFit: 'cover', borderRadius: '12px' }}/>
+            style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '12px' }}/>
 
             <h2>{weather.location.name},{weather.location.country}</h2>
             <p>Temperatura: {weather.current.temp_c}°C</p>
             <p>Condición: {weather.current.condition.text}</p>
+            <p>Hora Local: {formatTimeByRegion(weather.location.localtime, weather.location.tz_id.split('/')[0])}</p>
+
             <img src={weather.current.condition.icon}  alt="icono clima"></img>
             <button onClick={()  =>  handleDeleteOne(index)}>Eliminar</button>
             </div>
