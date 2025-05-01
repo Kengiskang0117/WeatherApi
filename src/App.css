@@ -9,25 +9,32 @@ body {
 */
 
 
-@keyframes anim{
-  0% {background-color: rgb(255, 167, 52);} /*Amarillo*/
- 25% {background-color: rgb(234, 161, 77);} /*Naranja*/
- 50% {background-color: #ffef08e2;} /*Negro*/
- 75% {background-color: rgba(15, 95, 193, 0.814);} /*Otra vez naranja*/
-100% {background-color: rgba(10, 36, 71, 0.944);} /*Otra vez amarillo*/
+@keyframes anim {
+  0% {background-color: #ffd54f;} 
+ 50% {background: color #61b3f7;;} 
+ 100% {background: color #d6dbdd;;} 
+ 
+ 
 }
 body {
-animation-name: anim;
-animation-duration: 25s;
-animation-iteration-count: infinite; 
-margin:0;
+animation: anim 15s ease-in-out infinite alternate;
 font-family:  Georgia, Times, 'Times New Roman', serif;
+margin:0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 35vh;
+  text-align: center;
 }
 
 h1 {
   
   font-size: 50px;
-  background-color: beige;
+  background-color: rgb(250, 250, 197);
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
@@ -38,4 +45,47 @@ h1 {
 
 p {
   text-align: center;
+ font-size: larger;
+}
+
+.search-section {
+  margin-top: 20px;
+}
+
+button{
+  padding: 8px 12px;
+  margin: 5px;
+  font-size: 15px;
+  background-color: #1279ee;
+  color:white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #493f3f;
+
+}
+
+.card-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.weather-card {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(17, 15, 15, 0.966);
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+.weather-card:hover {
+  transform: scale(1.03);
 }
