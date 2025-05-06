@@ -3,7 +3,7 @@ import './App.css';
 import cityImages from './cityImages.json';
 
 
-const formatTimeByRegion = (datetime, continent) => {
+const formatTimeByRegion = (datetime, continent) => {    // esto es una funcion 
   try {
     const [datePart, timePart] = datetime.split(' ');
     const isoString = `${datePart}T${timePart}:00`; // aseguramos formato HH:mm:ss
@@ -11,8 +11,8 @@ const formatTimeByRegion = (datetime, continent) => {
 
     if (continent === 'America') {
       return date.toLocaleTimeString('es-ES', {
-        hour: '2-digit',
-        minute: '2-digit',
+        /*hour: '2-digit',
+        minute: '2-digit',*/       // esto le especifica el horario correctamente 
         hour12: false
       });
     } else if (continent === 'Europe' || continent === 'Asia') {
@@ -44,6 +44,7 @@ function App() {
     try {
       const response = await fetch(url);
       const data = await response.json();
+      console.log (data);
 
       const alreadyExist = citiesWeather.some(
         (item) => item.location.name === data.location.name
